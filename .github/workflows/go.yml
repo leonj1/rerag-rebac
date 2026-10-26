@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
     - uses: actions/checkout@v4
 
@@ -20,7 +20,7 @@ jobs:
       run: CGO_ENABLED=1 go test -v ./...
 
   format:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
     - uses: actions/checkout@v4
 
@@ -38,7 +38,7 @@ jobs:
         fi
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
     - uses: actions/checkout@v4
 
@@ -54,7 +54,7 @@ jobs:
         args: --timeout=5m
 
   demo-test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     needs: [test, format, lint]
 
     services:
